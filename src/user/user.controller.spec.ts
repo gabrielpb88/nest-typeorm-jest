@@ -3,13 +3,14 @@ import { Test } from '@nestjs/testing';
 import { UserController } from './user.controller';
 import { INestApplication } from '@nestjs/common';
 import { UserModule } from './user.module';
+import { AppModule } from '../app.module';
 
 describe('UserController', () => {
   let app: INestApplication;
 
   beforeAll(async () => {
     const moduleRef = await Test.createTestingModule({
-      imports: [UserModule],
+      imports: [AppModule, UserModule],
     }).compile();
 
     app = moduleRef.createNestApplication();
